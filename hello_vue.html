@@ -1,0 +1,69 @@
+<!-- Module 8 Video 2/5 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Comments go in these -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Topic 8 Vue Video 2/5</title>
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
+    </head>
+    <body>
+        <!-- Write your HTML content here -->
+        <div id="app">
+            <!-- All the page that vue will manage will go here -->
+            <h1>Hello Vue!</h1>
+            <p>Original message: {{ message }}</p>                            <!-- Bounds message to script message -->
+
+            <p>Added Exclamation Points: {{ messageWithExclamationPoints }}</p>
+            <!-- <p>This is {{ thisClass }}</p> -->          <!-- Commented out -->
+            
+            <button v-on:click="addExclamation">Add !</button>
+            <button v-on:click="clear">Clear</button>
+        </div>
+        
+	<h1></h1>
+
+    <script>
+        // Write your script here
+        let app = Vue.createApp({
+            data() {
+                return {
+                    message: 'hello',                        // Data being bound to message
+                    // thisClass: 'Web Programming'         // commented out
+                    maxExclamationPoints: 10,              // Add commas when adding more
+                    exclamationPoints: 0
+                }
+            },
+            methods: {
+                addExclamation() {
+                    if (this.exclamationPoints < this.maxExclamationPoints) {
+                    this.exclamationPoints++                // Or use this.exclamationPoints = this.exclamationPoints + 1
+                   // this.message = this.message + '!'     // not needed to update with line 41 added
+                    } else {
+                        alert('No more exclamation points allowed.')
+                    }
+                }, 
+                clear() {
+                    // this.message = 'hello'               // not needed with line 41 added
+                    this.exclamationPoints = 0
+                }
+            },
+            computed: {
+                messageWithExclamationPoints() {
+                    let messageWithPoints = this.message
+                    for (let x = 0; x < this.exclamationPoints ; x++) {
+                        messageWithPoints = messageWithPoints + '!'
+                    }   
+                    return messageWithPoints 
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+    </body>
+
+</html>

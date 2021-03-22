@@ -1,0 +1,58 @@
+<!-- Module 8 Video 5/5 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Comments go in these -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Topic 8 Vue Video 5/5 </title>
+        <script src="https://unpkg.com/vue@next"></script>
+        <style>
+            td, th {
+                width: 25%;
+                text-align: center;
+            }
+        </style>
+
+        <!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
+    </head>
+    <body>
+            <!-- Write your HTML content here -->
+            <h1>Hello Vue Loops</h1>
+
+            
+
+            <div id="app">
+                <label for ="task">Please enter your to do task:</label>
+                <input id="task" v-model="newTask">
+                <button v-on:click="addTask">Add Task</button>
+                <ul>
+                    <li v-for="task in taskList"> {{ task }}</li>                  <!-- Looping for each <li> element in the data array -->
+                </ul>
+
+            </div>
+
+        <script>
+            // Write your script here
+            let app = Vue.createApp({
+                data() {
+                    return {
+                        newTask: '',
+                       taskList: []
+                    }
+                },
+                methods: {
+                    addTask() {
+                        this.taskList.push(this.newTask)
+                        this.newTask = ''
+                    }
+                }
+
+            })
+
+            app.mount('#app')
+            
+        </script>
+    </body>
+
+</html>

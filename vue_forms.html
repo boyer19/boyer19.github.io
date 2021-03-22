@@ -1,0 +1,64 @@
+<!-- Module 8 Video 3/5 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Comments go in these -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Topic 8 Vue Video 3/5 </title>
+        <script src="https://unpkg.com/vue@next"></script>
+
+        <!--  <link rel="stylesheet" type="text/css" href="style.css"> -->
+    </head>
+    <body>
+        <!-- Write your HTML content here -->
+        <div id="app">
+            <h1>Hello Vue Forms</h1>
+
+            <label for ="name">Please enter your name: </label>
+            <input v-model="name" id="name">                                <!-- two way data binding -->
+<!-- v-if statement-->
+            <p v-if="name">                                                 <!-- v-if statement only shows if text is entered in name -->
+                Your name is {{ name }}
+                <button v-on:click="clear">Clear</button>
+            </p> 
+<!-- v-else statement-->
+            <p v-else> 
+             Waiting for user input
+           </p> 
+
+<!-- Can also be used as <div> -->
+            <!-- v-if statement -->
+           <!-- <div v-if="name">     -->                                            <!-- v-if statement only shows if text is entered in name -->
+               <!-- Your name is {{ name }} -->
+               <!-- <button v-one:click="clear">Clear</button> -->
+            <!-- </div> -->
+        <!-- v-else statement-->
+            <!--<div v-else> -->
+                <!-- Waiting for user input -->
+            <!-- </div> -->
+
+        </div>
+        
+	
+
+    <script>
+        // Write your script here
+        let app = Vue.createApp({
+            data() {
+                return {
+                    name: ''                                             // empty string, also boolean value of false
+                }
+            },
+            methods: {
+                clear() {
+                    this.name = ''
+                }
+            }
+        })
+        
+        app.mount('#app')
+    </script>
+    </body>
+
+</html>
